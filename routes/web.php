@@ -1,6 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\WishlistController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +18,47 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/','App\Http\Controllers\Frontend\FrontendController@index');
+Route::get('product/{slug}',[FrontendController::class,'viewProduct']);
+Route::get('category/{slug}',[FrontendController::class,'viewCategory']);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('view-this-order/{id}', [App\Http\Controllers\HomeController::class, 'viewThisOrder']); //->name('home')
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('cart',[CartController::class,'viewCart']);
+    Route::get('checkout',[CheckoutController::class,'index']);
+    Route::post('place-order',[CheckoutController::class, 'placeOrder']);
+    Route::get('wishlist',[WishlistController::class,'index']);
+});
+Route::post('delete-item',[CartController::class,'deleteitem']);
+Route::post('add-to-cart',[CartController::class,'addProduct']);
+Route::post('add-to-wishlist',[WishlistController::class,'add']);
+Route::post('update-cart',[CartController::class,'updateProduct']);
+Route::post('delete-wishlist-item',[WishlistController::class,'deleteitem']);
+
+Route::group(['middleware'=>['auth','checkAdmin']],function (){
+   Route::get('/dashboard','App\Http\Controllers\Admin\DashboardController@index');
+   Route::get('categories','App\Http\Controllers\Admin\CategoryController@index');
+   Route::get('add-category','App\Http\Controllers\Admin\CategoryController@add');
+   Route::post('insert-category','App\Http\Controllers\Admin\CategoryController@insert');
+   Route::get('edit-prod/{id}','App\Http\Controllers\Admin\CategoryController@edit');
+   Route::put('update-category/{id}','App\Http\Controllers\Admin\CategoryController@update');
+   Route::get('delete-category/{id}','App\Http\Controllers\Admin\CategoryController@delete');
+   Route::get('products','App\Http\Controllers\Admin\ProductController@index');
+   Route::get('add-products','App\Http\Controllers\Admin\ProductController@add');
+   Route::post('insert-product','App\Http\Controllers\Admin\ProductController@insert');
+   Route::get('edit-e-prod/{id}','App\Http\Controllers\Admin\ProductController@edit');
+   Route::put('update-product/{id}','App\Http\Controllers\Admin\ProductController@update');
+   Route::get('delete-product/{id}','App\Http\Controllers\Admin\ProductController@delete');
+   Route::get('view-order' , 'App\Http\Controllers\Admin\OrderController@index');
+   Route::get('delivery-panel','App\Http\Controllers\Admin\DeliveryController@index');
+   Route::post('update-delivery','App\Http\Controllers\Admin\DeliveryController@update');
+});
+
+Route::group(['middleware'=>['auth','checkDelivery']],function (){
+
+
 });
