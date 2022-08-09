@@ -23,6 +23,17 @@
                             <a class="nav-link" href="{{url('wishlist')}}"><i class="fa fa-heart"></i></a>
                             {{-- <span class ="badge badge-pill w_count" style="color:crimson;">0</span></a> --}}
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('logout') }}"
+                              onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                              {{ __('Logout') }}
+                            </a>
+                  
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                          </li>
                     @else
                         <li class="nav-item"><a class= "nav-link" href="{{ route('login') }}">Log in</a></li>
                         @if (Route::has('register'))

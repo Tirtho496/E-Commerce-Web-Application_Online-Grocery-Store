@@ -41,6 +41,18 @@
             </a>
           </li>
 
+          <li class =" {{Request::is('view-coupons')?'active':''}}">
+            <a href="{{url('view-coupons')}}">
+              <p>View Coupons</p>
+            </a>
+          </li>
+
+          <li class =" {{Request::is('add-coupons')?'active':''}}">
+            <a href="{{url('add-coupons')}}">
+              <p>Add Coupons</p>
+            </a>
+          </li>
+
           <li class =" {{Request::is('delivery-panel')?'active':''}}">
             <a href="{{url('delivery-panel')}}">
               <p>Delivery Panel</p>

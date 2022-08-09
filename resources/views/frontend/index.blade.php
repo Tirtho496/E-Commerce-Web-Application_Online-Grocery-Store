@@ -15,10 +15,13 @@
                     <div class = "row">
                         @foreach ($trending_prod as $trending)
                             <div class = "col-md-3 mb-3">
-                                <div class="card">
-                                    <a href ="{{url('product/'.$trending->slug)}}" style="text-decoration: none; color:black;">
-                                    <img style ="width:100px; height:100px; object-fit:contain; " src="{{asset('assets/uploads/product/'.$trending->image)}}" alt="Trending Product">
-                                    <div class ="card-body">
+                                <div class="card ">
+                                    <div class="card-body">
+                                        <a href ="{{url('product/'.$trending->slug)}}" style="text-decoration: none; color:black;">
+                                        <img style ="width:100px; height:100px; object-fit:contain; " src="{{asset('assets/uploads/product/'.$trending->image)}}" alt="Trending Product"></a>
+                                    </div>
+                                    
+                                    <div class ="card-body text-bg-light">
                                         <h6>{{$trending->name}}</h6>
                                         <p>{{$trending->short_description}}</p>
                                         <p>BDT {{$trending->price}}</p>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Cart;
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\OrderItem;
@@ -14,15 +15,15 @@ class CheckoutController extends Controller
 {
     public function index(){
 
-        $cartItems = Cart::where('user_id',Auth::id())->get();
-        foreach($cartItems as $item)
-        {
-            if(!Product::where('id',$item->product_id)->where('qty','>=', $item->product_qty)->exists())
-            {
-                $removed = Cart::where('user_id',Auth::id())->where('product_id',$item->product_id)->first();
-                $removed->delete();
-            }
-        }
+        // $cartItems = Cart::where('user_id',Auth::id())->get();
+        // foreach($cartItems as $item)
+        // {
+        //     if(!(Product::where('id',$item->product_id)->where('qty','>=', $item->product_qty)->exists()))
+        //     {
+        //         $removed = Cart::where('user_id',Auth::id())->where('product_id',$item->product_id)->first();
+        //         $removed->delete();
+        //     }
+        // }
         $newcartItems = Cart::where('user_id',Auth::id())->get();
 
         return view('frontend.checkout',compact('newcartItems'));
@@ -45,7 +46,18 @@ class CheckoutController extends Controller
         $cart_total = Cart::where('user_id',Auth::id())->get();
         foreach($cart_total as $item)
         {
-            $total += $item->products->price;
+            $total += $item->products->price*$item->product_qty;
+        }
+        
+
+        $user = User::where('id',Auth::id())->first();
+        if($user->coupon->type == 0)
+        {
+            $total = $total- ($user->coupon->value);
+        }
+        else
+        {
+            $total =  floor($total- ($user->coupon->percent_off*$total/100));
         }
 
         $order->total_price = $total;

@@ -22,6 +22,7 @@ class Order extends Model
             'district',
             'division',
             'status',
+            'coupon_id',
             'total_price',
             'tracking_no',
             
@@ -29,6 +30,11 @@ class Order extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'id','user_id');
+        return $this->belongsTo(User::class, 'user_id','id');
+    }
+
+    public function coupon()
+    {
+        return $this->belongsTo(Coupon::class, 'coupon_id','id');
     }
 }

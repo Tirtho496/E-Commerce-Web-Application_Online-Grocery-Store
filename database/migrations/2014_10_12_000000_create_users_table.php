@@ -20,6 +20,8 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->tinyInteger('role')->default('0');
+            $table->integer('points')->default('0');
+            $table->integer('coupon_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@include('layouts.include.frontendnavbar')
+@include('layouts.include.links')
 
 @section('content')
 
@@ -33,7 +34,7 @@
                                 </thead>
                                 <tbody>
                                 @foreach ($orders as $item)
-                                    <tr>
+                                    <tr class="order_data">
                                         
                                         @if ($item->status == '0' || $item->status == '1')
                                             <td>{{$item->tracking_no}}</td>
@@ -41,6 +42,8 @@
                                             <td>{{$item->total_price}}</td>
                                             <td>{{$item->status == '0'?'Pending': 'Shipped'}}</td>
                                             <td><a href="{{url('view-this-order/'.$item->id)}}" class="btn btn-primary">View</a></td>
+                                            <input type="hidden" value="{{$item->id}}" class="order_id">
+                                            <td><a href="{{url('delete-order/'.$item->id)}}" class="btn btn-danger">Cancel Order</a></td>
                                         @endif
                                         
                                     </tr>
@@ -52,5 +55,40 @@
             </div>
         </div>
     </div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h6>Available Coupons</h6>
+                    <div class="row">
+                    @foreach($coupon as $item)
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header"><h6>{{$item->code}}</h6></div>
+                            <div class="card-body"><a class="btn btn-primary" href="{{url('redeem/'.$item->id)}}/">Redeem</a></div>
+                        </div>
+                    </div>
+                    @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
+
+@yield('content')
+
+@section('scripts')
+
+        <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous"></script>
+        
+
+@endsection
+
+@yield('scripts')

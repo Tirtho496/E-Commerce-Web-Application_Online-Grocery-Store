@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'points',
+        'coupon_id',
     ];
 
     /**
@@ -41,4 +43,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function coupon()
+    {
+        return $this->belongsTo(Coupon::class, 'coupon_id','id');
+    }
+
 }

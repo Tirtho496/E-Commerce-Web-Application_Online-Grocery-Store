@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
@@ -26,12 +28,15 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('view-this-order/{id}', [App\Http\Controllers\HomeController::class, 'viewThisOrder']); //->name('home')
+Route::get('delete-order/{id}',[App\Http\Controllers\HomeController::class, 'deleteorder']);
+Route::get('redeem/{id}',[App\Http\Controllers\HomeController::class, 'redeem']);
 
 Route::middleware(['auth'])->group(function(){
     Route::get('cart',[CartController::class,'viewCart']);
     Route::get('checkout',[CheckoutController::class,'index']);
     Route::post('place-order',[CheckoutController::class, 'placeOrder']);
     Route::get('wishlist',[WishlistController::class,'index']);
+    
 });
 Route::post('delete-item',[CartController::class,'deleteitem']);
 Route::post('add-to-cart',[CartController::class,'addProduct']);
@@ -56,6 +61,10 @@ Route::group(['middleware'=>['auth','checkAdmin']],function (){
    Route::get('view-order' , 'App\Http\Controllers\Admin\OrderController@index');
    Route::get('delivery-panel','App\Http\Controllers\Admin\DeliveryController@index');
    Route::post('update-delivery','App\Http\Controllers\Admin\DeliveryController@update');
+   Route::get('view-coupons',[CouponController::class,'index']);
+   Route::get('add-coupons',[CouponController::class,'add']);
+   Route::post('insert-coupon',[CouponController::class,'insert']);
+   Route::get('delete-coupon/{id}',[CouponController::class,'delete']);
 });
 
 Route::group(['middleware'=>['auth','checkDelivery']],function (){

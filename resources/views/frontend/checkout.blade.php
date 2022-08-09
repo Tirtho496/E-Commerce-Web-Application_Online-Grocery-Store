@@ -74,7 +74,13 @@ Checkout
                                     </tr>
                                 </thead>
                                 <tbody>
+                                @php
+                                    $total = 0;
+                                @endphp
                                 @foreach ($newcartItems as $item)
+                                    @php
+                                        $total += $item->products->price*$item->product_qty;
+                                    @endphp
                                     <tr>
                                         <td>{{$item->products->name}}</td>
                                         <td>{{$item->product_qty}}</td>
@@ -85,6 +91,15 @@ Checkout
                                 </tbody>
                                 
                             </table>  
+                            <h6>Total Price: {{$total}} </h6>
+                            @if($item->user->coupon->type == 0)
+                                <h6>Discount: - {{$item->user->coupon->value}} </h6>
+                                <h6>Grand Total: {{floor($total- ($item->user->coupon->value))}} </h6>
+                            @else
+                                <h6>Discount: {{$item->user->coupon->percent_off}} % </h6>
+                                <h6>Grand Total: BDT {{floor($total- ($item->user->coupon->percent_off*$total/100))}} </h6>
+                            @endif
+                            <h6>Added Points: {{floor($total/1000)*100}} </h6>
                             <hr>
                             <button type="submit" class="btn btn-success">Place Order</button>
                         </div>
