@@ -1,6 +1,6 @@
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="color:antiquewhite;">
     <div class="container-fluid">
         <div class ="row">
             <div class="col-md-10"><input class="form-control" id="search_product" type="search" placeholder="Search"></div>

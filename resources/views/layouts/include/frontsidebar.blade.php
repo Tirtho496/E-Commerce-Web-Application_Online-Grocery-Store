@@ -1,8 +1,8 @@
-<div class="border-end bg-white" id="sidebar-wrapper">
-  <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
-  <div class="list-group list-group-flush">
+<div class="border-end bg-dark" id="sidebar-wrapper">
+  <div class="sidebar-heading bg-dark">Friends Grocery</div>
+  <div class="list-group list-group-flush bg-dark">
       @foreach($category as $item)
-        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="{{url('category/'.$item->slug)}}">{{$item->name}}</a>   
+        <a class="list-group-item list-group-item-action list-group-item-dark p-3" href="{{url('category/'.$item->slug)}}">{{$item->name}}</a>   
       @endforeach
   </div>
 </div>

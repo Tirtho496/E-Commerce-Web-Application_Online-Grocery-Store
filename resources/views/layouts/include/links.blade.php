@@ -19,6 +19,10 @@
     <!-- Styles -->
     <link href="{{ asset('frontend/css/bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('frontend/css/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/owl.theme.default.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('frontend/css/payment.css') }}" rel="stylesheet"> --}}
     
     
 

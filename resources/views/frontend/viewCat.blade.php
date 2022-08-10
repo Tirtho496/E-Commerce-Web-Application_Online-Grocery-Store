@@ -17,8 +17,8 @@
                             <div class = "col-md-3 mb-3">
                                 <div class="card">
                                     <a href ="{{url('product/'.$p->slug)}}" style="text-decoration: none; color:black">
-                                    <img style ="width:100px; height:100px; object-fit:contain; " src="{{asset('assets/uploads/product/'.$p->image)}}" alt="Trending Product">
-                                    <div class ="card-body">
+                                    <img style ="width:150px; height:150px; object-fit:contain; " src="{{asset('assets/uploads/product/'.$p->image)}}" alt="Trending Product">
+                                    <div class ="card-body" style="background-color:rgba(22,28,45); color:antiquewhite">
                                         <h6>{{$p->name}}</h6>
                                         <p>{{$p->short_description}}</p>
                                         <p>BDT {{$p->price}}</p>

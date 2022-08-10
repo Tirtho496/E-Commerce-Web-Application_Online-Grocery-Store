@@ -5377,17 +5377,16 @@ textarea.form-control-lg {
 }
 
 .list-group-item-dark {
-  color: #141619;
-  background-color: #d3d3d4;
+  color: antiquewhite;
+  background-color: 	rgba(22,28,45,0.15);
 }
 .list-group-item-dark.list-group-item-action:hover, .list-group-item-dark.list-group-item-action:focus {
-  color: #141619;
-  background-color: #bebebf;
+  color:rgb(217,226,239);
+  background-color: rgba(22,28,4);
 }
 .list-group-item-dark.list-group-item-action.active {
-  color: #fff;
-  background-color: #141619;
-  border-color: #141619;
+  color:rgb(217,226,239);
+  background-color: rgba(22,28,4);
 }
 
 .btn-close {
@@ -7841,8 +7840,10 @@ textarea.form-control-lg {
 }
 
 .bg-dark {
-  --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+
+  background-color: rgba(26, 102, 255,0.5); !important;
+  color:antiquewhite; !important;
+
 }
 
 .bg-black {
@@ -11291,7 +11292,7 @@ textarea.form-control-lg {
 }
 
 #sidebar-wrapper {
-  min-height: 100vh;
+  min-height: 100%;
   margin-left: -15rem;
   transition: margin 0.25s ease-out;
 }
@@ -11349,4 +11350,11 @@ body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
   font-size: 15px;
   padding: 5px;
   font-weight: 400;
+}
+
+body {
+  background-image: url("dairy.jpg");
+  opacity:0.95;
+  background-attachment:fixed;
+
 }

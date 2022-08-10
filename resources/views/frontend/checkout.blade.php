@@ -101,7 +101,8 @@ Checkout
                             @endif
                             <h6>Added Points: {{floor($total/1000)*100}} </h6>
                             <hr>
-                            <button type="submit" class="btn btn-success">Place Order</button>
+                            <button type="submit" class="btn btn-info">Place order with cash on delivery</button>
+                            <a href="complete-payment" class="btn btn-success">Pay Now</a>
                         </div>
                     </div>
                 </div>

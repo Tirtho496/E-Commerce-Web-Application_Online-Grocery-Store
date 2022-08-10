@@ -51,6 +51,11 @@ class CheckoutController extends Controller
         
 
         $user = User::where('id',Auth::id())->first();
+        $point=floor($total/1000)*100;
+
+        $user->points = $user->points + $point;
+        $user->save();
+        
         if($user->coupon->type == 0)
         {
             $total = $total- ($user->coupon->value);

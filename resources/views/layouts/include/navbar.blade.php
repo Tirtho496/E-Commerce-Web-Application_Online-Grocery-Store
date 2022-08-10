@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-primary  navbar-absolute">
+<nav class="navbar navbar-expand-lg bg-dark navbar-absolute">
   <div class="container-fluid">
     <div class="navbar-wrapper">
       <div class="navbar-toggle">

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\WishlistController;
@@ -36,6 +37,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('checkout',[CheckoutController::class,'index']);
     Route::post('place-order',[CheckoutController::class, 'placeOrder']);
     Route::get('wishlist',[WishlistController::class,'index']);
+    Route::get('complete-payment',[PaymentController::class, 'index']);
     
 });
 Route::post('delete-item',[CartController::class,'deleteitem']);
