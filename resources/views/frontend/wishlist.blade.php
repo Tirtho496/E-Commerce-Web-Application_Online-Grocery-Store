@@ -73,6 +73,27 @@ Wishlist
             src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
             crossorigin="anonymous"></script>
+
+            <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+            <script>
+                  var availableTags = [];
+                  $.ajax({
+                    method: "GET",
+                    url: "/product_list",
+                    success: function(response){
+                        startAutoComplete(response);
+                    }
+                  });
+                  function startAutoComplete(availableTags)
+                  {
+                    $( "#search_product" ).autocomplete({
+                    source: availableTags
+                  });
+                  }
+                  
+                </script>
+
             <script>
 
             $(document).ready(function (){
