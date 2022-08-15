@@ -22,6 +22,7 @@
 
     <link href="{{ asset('frontend/css/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/owl.theme.default.min.css') }}" rel="stylesheet">
+    <linK href="{{ asset('frontend/css/payment.css') }}" rel="stylesheet"/>
     {{-- <link href="{{ asset('frontend/css/payment.css') }}" rel="stylesheet"> --}}
     
     

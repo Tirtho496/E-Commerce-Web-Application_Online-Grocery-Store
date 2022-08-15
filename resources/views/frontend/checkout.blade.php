@@ -7,6 +7,11 @@ Checkout
 @endsection
 
 @section('content')
+    @if (Session::has('msg'))
+    <div class="alert alert-danger">
+        <h4>{{Session::get("msg")}}</h4>
+    </div>
+    @endif
     <div class="py-3 mb-4 shadow-sm bg-warning border-top">
         <div class="container">
             <h5 class="mb-0">Checkout</h5>
@@ -102,13 +107,70 @@ Checkout
                             <h6>Added Points: {{floor($total/1000)*100}} </h6>
                             <hr>
                             <button type="submit" class="btn btn-info">Place order with cash on delivery</button>
-                            <a href="complete-payment" class="btn btn-success">Pay Now</a>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row" style="margin-top:2%;">
+                <div class="col-md-7">
+                    <div class="creditCardForm">
+                        <div class="heading">
+                            <h4>Pay now for a cashless delivery</h4>
+                        </div>
+                        <div class="payment">
+                            <form>
+                                <div class="form-group owner">
+                                    <label for="owner">Name on Card</label>
+                                    <input type="text" class="form-control" id="owner">
+                                </div>
+                                <div class="form-group CVV">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" class="form-control" id="cvv">
+                                </div>
+                                <div class="form-group" id="card-number-field">
+                                    <label for="cardNumber">Card Number</label>
+                                    <input type="text" class="form-control" id="cardNumber">
+                                </div>
+                                <div class="form-group" id="expiration-date">
+                                    <label>Expiration Date</label>
+                                    <select>
+                                        <option value="01">January</option>
+                                        <option value="02">February </option>
+                                        <option value="03">March</option>
+                                        <option value="04">April</option>
+                                        <option value="05">May</option>
+                                        <option value="06">June</option>
+                                        <option value="07">July</option>
+                                        <option value="08">August</option>
+                                        <option value="09">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
+                                    <select>
+                                        <option value="16"> 2022</option>
+                                        <option value="17"> 2023</option>
+                                        <option value="18"> 2024</option>
+                                        <option value="19"> 2025</option>
+                                        <option value="20"> 2026</option>
+                                        <option value="21"> 2027</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" id="credit_cards">
+                                    <img src="{{asset('images/visa.jpg')}}" id="visa">
+                                    <img src="{{asset('images/mastercard.jpg')}}" id="mastercard">
+                                    <img src="{{asset('images/amex.jpg')}}" id="amex">
+                                </div>
+                                <div class="form-group" id="pay-now">
+                                    <button type="submit" class="btn btn-info" id="confirm-purchase">Pay BDT {{floor($total- ($item->user->coupon->percent_off*$total/100))}}</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                                
         </form>
-    </div>
+        </div>       
 @endsection
 
 @yield('content')
@@ -120,7 +182,8 @@ Checkout
             src="https://code.jquery.com/jquery-3.6.0.js"
             integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
             crossorigin="anonymous"></script>
-    <script>
+        <script src="{{ asset('frontend/js/jquery.payform.min.js') }}"></script>
+        <script src="{{ asset('frontend/js/script.js') }}"></script>
 @endsection
 
 @yield('scripts')

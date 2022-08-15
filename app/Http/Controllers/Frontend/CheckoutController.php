@@ -10,6 +10,7 @@ use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class CheckoutController extends Controller
 {
@@ -31,6 +32,11 @@ class CheckoutController extends Controller
 
     public function placeOrder(Request $request)
     {
+        if($request->input('fname') == "")
+        {
+            session()->flash('msg','Fill up all customer details fields');
+            return redirect()->back();
+        }
         $order = new Order();
         $order->user_id = Auth::id();
         $order->fname = $request->input('fname');
