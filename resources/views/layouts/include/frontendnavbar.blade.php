@@ -2,12 +2,13 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="color:antiquewhite;">
     <div class="container-fluid">
+        <form action="{{url('searchproduct')}}" method="POST">
+            @csrf
         <div class ="row">
-            <div class="col-md-10"><input class="form-control" id="search_product" type="search" placeholder="Search"></div>
-            <div class="col-md-2"><button class="input-group-text"><i class="fa fa-search" style="padding:3px; margin-top:2px;"></i></button></div>
-
-        
+            <div class="col-md-10"><input class="form-control" name="search" id="search_product" type="search" placeholder="Search"></div>
+            <div class="col-md-2"><button type="submit" class="input-group-text"><i class="fa fa-search" style="padding:3px; margin-top:2px;"></i></button></div>
         </div>
+        </form>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                 <li class="nav-item active"><a class= "nav-link" href="{{ url('/') }}">Home</a></li>

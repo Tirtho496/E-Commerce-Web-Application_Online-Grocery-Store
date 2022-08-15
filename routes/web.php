@@ -31,6 +31,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('view-this-order/{id}', [App\Http\Controllers\HomeController::class, 'viewThisOrder']); //->name('home')
 Route::get('delete-order/{id}',[App\Http\Controllers\HomeController::class, 'deleteorder']);
 Route::get('redeem/{id}',[App\Http\Controllers\HomeController::class, 'redeem']);
+Route::get('product_list',[FrontendController::class, 'productList']);
+Route::post('searchproduct',[FrontendController::class, 'searchProduct']);
 
 Route::middleware(['auth'])->group(function(){
     Route::get('cart',[CartController::class,'viewCart']);

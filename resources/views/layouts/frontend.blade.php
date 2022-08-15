@@ -17,6 +17,26 @@
     <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
     <script src="{{ asset('frontend/js/bootstrap.min.js')}}"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <script>
+          var availableTags = [];
+          $.ajax({
+            method: "GET",
+            url: "/product_list",
+            success: function(response){
+                startAutoComplete(response);
+            }
+          });
+          function startAutoComplete(availableTags)
+          {
+            $( "#search_product" ).autocomplete({
+            source: availableTags
+          });
+          }
+          
+        </script>
+
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
     

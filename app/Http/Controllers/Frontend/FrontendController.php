@@ -43,4 +43,36 @@ class FrontendController extends Controller
             return redirect('/')->with('status','No such product found');
         }
     }
+
+    public function productList()
+    {
+        $products = Product::select('name')->where('status','0')->get();
+        $data = [];
+
+        foreach($products as $item){
+            $data[] = $item['name'];
+        }
+
+        return $data;
+    }
+
+    public function searchProduct(Request $request)
+    {
+        $product = $request->search;
+
+        if($product != "")
+        {
+            $item = Product::where("name","LIKE","%$product%")->first();
+            if($item){
+                return redirect('product/'.$item->slug);
+            }
+            else{
+                return redirect()->back()->with("status","No products matched with search");
+            }
+        }
+        else{
+            return redirect()->back();
+        }
+        
+    }
 }
