@@ -1,12 +1,5 @@
-<div class="sidebar" data-color="orange">
-      <!--
-        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
-    -->
-      <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          Admin Panel
-        </a>
-      </div>
+<div class="sidebar" data-color="blue">
+
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
           <li class="{{Request::is('dashboard')?'active':''}}">

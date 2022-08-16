@@ -96,13 +96,17 @@ Checkout
                                 </tbody>
                                 
                             </table>  
-                            <h6>Total Price: {{$total}} </h6>
-                            @if($item->user->coupon->type == 0)
-                                <h6>Discount: - {{$item->user->coupon->value}} </h6>
-                                <h6>Grand Total: {{floor($total- ($item->user->coupon->value))}} </h6>
+                            @if($item->user->coupon_id)
+                                <h6>Total Price: {{$total}} </h6>
+                                @if($item->user->coupon->type == 0)
+                                    <h6>Discount: - {{$item->user->coupon->value}} </h6>
+                                    <h6>Grand Total: {{floor($total- ($item->user->coupon->value))}} </h6>
+                                @else
+                                    <h6>Discount: {{$item->user->coupon->percent_off}} % </h6>
+                                    <h6>Grand Total: BDT {{floor($total- ($item->user->coupon->percent_off*$total/100))}} </h6>
+                                @endif
                             @else
-                                <h6>Discount: {{$item->user->coupon->percent_off}} % </h6>
-                                <h6>Grand Total: BDT {{floor($total- ($item->user->coupon->percent_off*$total/100))}} </h6>
+                                <h6>Total Price: {{$total}} </h6>
                             @endif
                             <h6>Added Points: {{floor($total/1000)*100}} </h6>
                             <hr>
@@ -162,7 +166,20 @@ Checkout
                                     <img src="{{asset('images/amex.jpg')}}" id="amex">
                                 </div>
                                 <div class="form-group" id="pay-now">
-                                    <button type="submit" class="btn btn-info" id="confirm-purchase">Pay BDT {{floor($total- ($item->user->coupon->percent_off*$total/100))}}</button>
+                                    @php
+                                        if($item->user->coupon_id)
+                                        {
+                                            if($item->user->coupon->type == 0)
+                                            {
+                                                $total = floor($total- ($item->user->coupon->value));
+                                            }
+                                            else
+                                            {
+                                                $total =  floor($total- ($item->user->coupon->percent_off*$total/100));
+                                            }
+                                        }
+                                    @endphp
+                                    <button type="submit" class="btn btn-info" id="confirm-purchase">Pay BDT {{$total}}</button>
                                 </div>
                             </form>
                         </div>

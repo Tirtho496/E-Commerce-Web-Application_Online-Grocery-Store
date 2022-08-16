@@ -11297,9 +11297,22 @@ textarea.form-control-lg {
   transition: margin 0.25s ease-out;
 }
 
-#sidebar-wrapper .sidebar-heading {
+.sidebar-heading {
   padding: 0.875rem 1.25rem;
   font-size: 1.2rem;
+  font-family: 'Vampiro One', cursive;
+   !important;
+}
+
+.slider-logo{
+  width: 70px;
+  height:auto;
+  float:left;
+
+}
+
+.sidebar-heading a{
+  color: antiquewhite;
 }
 
 #sidebar-wrapper .list-group {

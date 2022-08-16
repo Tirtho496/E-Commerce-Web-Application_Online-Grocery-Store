@@ -62,13 +62,16 @@ class CheckoutController extends Controller
         $user->points = $user->points + $point;
         $user->save();
         
-        if($user->coupon->type == 0)
+        if($user->coupon_id)
         {
-            $total = $total- ($user->coupon->value);
-        }
-        else
-        {
-            $total =  floor($total- ($user->coupon->percent_off*$total/100));
+            if($user->coupon->type == 0)
+            {
+                $total = $total- ($user->coupon->value);
+            }
+            else
+            {
+                $total =  floor($total- ($user->coupon->percent_off*$total/100));
+            }
         }
 
         $order->total_price = $total;

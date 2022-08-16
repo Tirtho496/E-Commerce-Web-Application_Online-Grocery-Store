@@ -15,6 +15,7 @@
     <!-- Styles -->
     <link href="{{ asset('admin/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/now-ui-dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet">
     
 
 
@@ -25,7 +26,7 @@
         <div class="main-panel" id="main-panel">
             @include('layouts.include.navbar')
 
-            <div class="content">
+            <div class="content" style="margin-top: 10%;">
                  @yield('content')
             
             </div>
