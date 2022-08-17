@@ -30,6 +30,7 @@
                                         <th>Order Date</th>
                                         <th>Total Price</th>
                                         <th>Status</th>
+                                        <th>Payment Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,9 +42,10 @@
                                             <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
                                             <td>{{$item->total_price}}</td>
                                             <td>{{$item->status == '0'?'Pending': 'Shipped'}}</td>
+                                            <td>{{$item->paystatus == '0'?'Unpaid': 'Paid'}}</td>
                                             <td><a href="{{url('view-this-order/'.$item->id)}}" class="btn btn-primary">View</a></td>
                                             <input type="hidden" value="{{$item->id}}" class="order_id">
-                                            <td><a href="{{url('delete-order/'.$item->id)}}" class="btn btn-danger">Cancel Order</a></td>
+                                            <td><a href="{{url('delete-order/'.$item->id)}}" class="btn btn-danger">Cancel</a></td>
                                         @endif
                                         
                                     </tr>

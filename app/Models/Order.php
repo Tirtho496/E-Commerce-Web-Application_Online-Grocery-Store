@@ -22,6 +22,7 @@ class Order extends Model
             'district',
             'division',
             'status',
+            'paystatus',
             'coupon_id',
             'total_price',
             'tracking_no',

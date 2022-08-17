@@ -17,6 +17,7 @@
                     <th>Order Date</th>
                     <th>Total Price</th>
                     <th>Status</th>
+                    <th>Payment Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +31,7 @@
                     <td>{{date('d-m-Y',strtotime($item->created_at))}}</td>
                     <td>{{$item->total_price}}</td>
                     <td>{{$item->status == '0'?'Pending': 'Shipped'}}</td>
+                    <td>{{$item->paystatus == '0'?'Unpaid': 'Paid'}}</td>
                 </tr>
                 @endforeach
             </tbody>

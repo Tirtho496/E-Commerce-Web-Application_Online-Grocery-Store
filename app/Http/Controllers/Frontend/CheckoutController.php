@@ -37,6 +37,7 @@ class CheckoutController extends Controller
             session()->flash('msg','Fill up all customer details fields');
             return redirect()->back();
         }
+
         $order = new Order();
         $order->user_id = Auth::id();
         $order->fname = $request->input('fname');
@@ -47,6 +48,15 @@ class CheckoutController extends Controller
         $order->city = $request->input('city');
         $order->district= $request->input('district');
         $order->division = $request->input('division');
+
+        if($request->input('cardname') == "")
+        {
+            $order->paystatus = '0';
+        }
+        else
+        {
+            $order->paystatus = '1';
+        }
         $total = 0;
 
         $cart_total = Cart::where('user_id',Auth::id())->get();

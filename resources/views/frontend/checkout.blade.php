@@ -125,15 +125,15 @@ Checkout
                             <form>
                                 <div class="form-group owner">
                                     <label for="owner">Name on Card</label>
-                                    <input type="text" class="form-control" id="owner">
+                                    <input type="text" class="form-control" id="owner" name="cardname">
                                 </div>
                                 <div class="form-group CVV">
                                     <label for="cvv">CVV</label>
-                                    <input type="text" class="form-control" id="cvv">
+                                    <input type="text" class="form-control" id="cvv" name="cvv">
                                 </div>
                                 <div class="form-group" id="card-number-field">
                                     <label for="cardNumber">Card Number</label>
-                                    <input type="text" class="form-control" id="cardNumber">
+                                    <input type="text" class="form-control" id="cardNumber" name="cardNo">
                                 </div>
                                 <div class="form-group" id="expiration-date">
                                     <label>Expiration Date</label>
