@@ -110,6 +110,7 @@
             e.preventDefault();
 
             var product_id = $(this).closest('.product_data').find('.prod_id').val();
+            var product_qty = $(this).closest('.product_data').find('.qty-input').val();
 
 
             $.ajaxSetup({
@@ -123,6 +124,7 @@
                 url: "/add-to-wishlist",
                 data: {
                     'product_id': product_id,
+                    'product_qty': product_qty,
                 },
                 success: function(response){
                     alert(response.status);

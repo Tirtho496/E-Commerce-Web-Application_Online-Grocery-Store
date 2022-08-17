@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="navbar-wrapper">
       
-      <a class="navbar-brand" href="#"><img src="{{asset('images/admin.png')}}" style="width:40px; height:auto; float:left; margin-right: 4%;"><h5>Admin Panel<h5></a>
+      <a class="navbar-brand" href="{{url('/dashboard')}}"><img src="{{asset('images/admin.png')}}" style="width:40px; height:auto; float:left; margin-right: 4%;"><h5>Admin Panel<h5></a>
     </div>
     <div class="collapse navbar-collapse justify-content-end" id="navigation">
       <ul class="navbar-nav">

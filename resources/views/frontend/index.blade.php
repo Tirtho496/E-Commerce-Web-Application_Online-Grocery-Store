@@ -1,13 +1,13 @@
 @extends('layouts.frontend')
 
 @section('content')
-{{-- <div class="container"> --}}
+<div class="container">
     <div class="py-3 mb-4 shadow-sm bg-warning border-top">
         <div class="container">
             <h5 class="mb-0">Trending Category</h5>
         </div>
     </div>
-    {{-- @include('layouts.include.slider') --}}
+
     <div class="py-5">
         <div class ="container">
             
@@ -70,7 +70,18 @@
         </div>
     </div>
 
-{{-- </div> --}}
+    <div class="contact">
+       <h3>Contact Us</h3>
+      <form action="{{url('place-comment')}}" method="POST">      
+        {{csrf_field()}}
+        <input name="name" type="text" class="feedback-input" placeholder="Name" />   
+        <input name="email" type="text" class="feedback-input" placeholder="Email" />
+        <textarea name="text" class="feedback-input" placeholder="Comment"></textarea>
+        <input type="submit" value="SUBMIT"/>
+      </form>
+    </div>
+
+</div>
 @endsection
 
 @section('scripts')

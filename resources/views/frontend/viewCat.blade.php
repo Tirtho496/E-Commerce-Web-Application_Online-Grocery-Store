@@ -2,6 +2,7 @@
 @extends('layouts.include.links')
 
 @section('content')
+<div class="container">
 <div class="py-3 mb-4 shadow-sm bg-warning border-top">
     <div class="container">
         <h5 class="mb-0">{{$cat->name}}</h5>
@@ -32,4 +33,5 @@
             </div>
         </div>
     </div>
+</div>
 @endsection

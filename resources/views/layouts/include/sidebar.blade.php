@@ -51,6 +51,18 @@
               <p>Delivery Panel</p>
             </a>
           </li>
+
+          <li class =" {{Request::is('view-users')?'active':''}}">
+            <a href="{{url('view-users')}}">
+              <p>View Users</p>
+            </a>
+          </li>
+
+          <li class =" {{Request::is('view-comments')?'active':''}}">
+            <a href="{{url('view-comments')}}">
+              <p>View Comments</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>

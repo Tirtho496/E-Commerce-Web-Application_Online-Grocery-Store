@@ -3,9 +3,12 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\PaymentController;
+use App\Http\Controllers\Admin\ViewCommentController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\WishlistController;
@@ -46,7 +49,9 @@ Route::post('delete-item',[CartController::class,'deleteitem']);
 Route::post('add-to-cart',[CartController::class,'addProduct']);
 Route::post('add-to-wishlist',[WishlistController::class,'add']);
 Route::post('update-cart',[CartController::class,'updateProduct']);
+Route::post('update-wish',[WishlistController::class,'updateProduct']);
 Route::post('delete-wishlist-item',[WishlistController::class,'deleteitem']);
+Route::post('place-comment',[CommentController::class, 'makeComment']);
 
 Route::group(['middleware'=>['auth','checkAdmin']],function (){
    Route::get('/dashboard','App\Http\Controllers\Admin\DashboardController@index');
@@ -69,6 +74,10 @@ Route::group(['middleware'=>['auth','checkAdmin']],function (){
    Route::get('add-coupons',[CouponController::class,'add']);
    Route::post('insert-coupon',[CouponController::class,'insert']);
    Route::get('delete-coupon/{id}',[CouponController::class,'delete']);
+   Route::get('view-users',[UserController::class,'index']);
+   Route::get('view-comments',[ViewCommentController::class,'index']);
+   Route::get('delete-comment/{id}',[ViewCommentController::class,'delete']);
+   
 });
 
 Route::group(['middleware'=>['auth','checkDelivery']],function (){

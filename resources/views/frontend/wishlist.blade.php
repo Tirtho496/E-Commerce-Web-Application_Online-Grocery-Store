@@ -12,11 +12,11 @@ Wishlist
         </div>
     </div>
     <div class="container">
-        <div class="card shadow ">
+        <div class="card shadow product_data">
             <div class="card-body">
                 @if($wish->count()>0)
                 @foreach($wish as $item)
-                <div class="row product_data">
+                <div class="row ">
                     <div class="col-md-2">
                         <img src="{{asset('assets/uploads/product/'.$item->products->image)}}" height="70px" width="70px" alt="Product Image">
                     </div>
@@ -44,14 +44,14 @@ Wishlist
                             @endif
                     </div>
 
-                    <div class="col-md-2" style="padding-top:23px;"">
-                        <button type="button" class="btn btn-success me-3 float-start add-to-cart"><i class="fa fa-trash" ></i>Add to Cart</button>
+                    <div class="col-md-2" style="padding-top:23px;">
+                        <button type="button" class="btn btn-success me-3 float-start add-to-cart"><i class="fa fa-shopping-cart" ></i>Add to Cart</button>
                     </div>
                     
                     <div class="col-md-2" style="padding-top:23px;">
                         <button type="button" class="btn btn-danger me-3 float-start delete-item"><i class="fa fa-trash" ></i>Remove</button>
                     </div>
-                    </div>
+                </div>
                     
                 @endforeach
                 @else
@@ -151,33 +151,6 @@ Wishlist
             });
         });
 
-        $('.storeQty').click(function (e) { 
-            e.preventDefault();
-            
-            $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            var prod_id = $(this).closest('.product_data').find('.prod_id').val();
-            var qty = $(this).closest('.product_data').find('.qty-input').val();
-
-            
-            $.ajax({
-                type: "POST",
-                url: "update-cart",
-                data: {
-                    'prod_id':prod_id,
-                    'prod_qty': qty,
-                },
-                success: function (response) {
-                    window.location.reload();
-                    swal("",response.status, "success");
-                }
-            });
-        });
-
         $(document).ready(function(){
             $('.increment-btn').click(function (e){
                 e.preventDefault();
@@ -203,7 +176,7 @@ Wishlist
             
             $.ajax({
                 type: "POST",
-                url: "update-cart",
+                url: "update-wish",
                 data: {
                     'prod_id':prod_id,
                     'prod_qty': qty,
@@ -239,7 +212,7 @@ Wishlist
             
             $.ajax({
                 type: "POST",
-                url: "update-cart",
+                url: "update-wish",
                 data: {
                     'prod_id':prod_id,
                     'prod_qty': qty,

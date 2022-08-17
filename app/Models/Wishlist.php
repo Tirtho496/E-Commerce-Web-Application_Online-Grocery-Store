@@ -12,6 +12,7 @@ class Wishlist extends Model
     protected $fillabe = [
         'user_id',
         'product_id',
+        'product_qty',
     ];
 
     public function products()
