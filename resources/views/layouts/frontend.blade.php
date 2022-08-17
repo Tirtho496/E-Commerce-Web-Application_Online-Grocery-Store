@@ -9,9 +9,11 @@
                  @yield('content')
             
             </div>
+            
         </div>
     
     </div>
+    @include('layouts.include.frontendfooter')
 
     
     <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>

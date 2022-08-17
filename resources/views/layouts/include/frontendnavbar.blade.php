@@ -1,4 +1,7 @@
-
+@php
+use App\Models\Cart;
+use App\Models\Wishlist;
+@endphp
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="color:antiquewhite;">
     <div class="container-fluid">
@@ -14,15 +17,29 @@
                 <li class="nav-item active"><a class= "nav-link" href="{{ url('/') }}">Home</a></li>
                 @if (Route::has('login'))
                     @auth
+                        @php
+                            $cart = Cart::where('user_id',Auth::id())->get();
+                            $wish = Wishlist::where('user_id',Auth::id())->get();
+                            $total_c = 0;
+                            $total_w = 0;
+                            foreach($cart as $item)
+                            {
+                                $total_c++;
+                            }
+
+                            foreach($wish as $item)
+                            {
+                                $total_w++;
+                            }
+                        @endphp
                         <li class="nav-item active"><a class = "nav-link" href="{{ url('/home') }}">Profile</a></li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('cart')}}"><i class="fa fa-shopping-cart"></i></a>
-                            {{-- <span class ="badge badge-pill c_count style=" color="crimson;">0</span></a> --}}
+                            <a class="nav-link" href="{{url('cart')}}"><i class="fa fa-shopping-cart"></i><span class ="badge badge-pill w_count" style="color:crimson; font-weight:bold;">{{$total_c}}</span></a>
 
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{url('wishlist')}}"><i class="fa fa-heart"></i></a>
-                            {{-- <span class ="badge badge-pill w_count" style="color:crimson;">0</span></a> --}}
+                            <a class="nav-link" href="{{url('wishlist')}}"><i class="fa fa-heart"></i><span class ="badge badge-pill w_count" style="color:crimson; font-weight:bold;">{{$total_w}}</span></a>
+                            
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"
