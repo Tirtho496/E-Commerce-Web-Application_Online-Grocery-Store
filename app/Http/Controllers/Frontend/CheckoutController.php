@@ -70,7 +70,7 @@ class CheckoutController extends Controller
         $point=floor($total/1000)*100;
 
         $user->points = $user->points + $point;
-        $user->save();
+        
         
         if($user->coupon_id)
         {
@@ -82,7 +82,10 @@ class CheckoutController extends Controller
             {
                 $total =  floor($total- ($user->coupon->percent_off*$total/100));
             }
+            $user->coupon_id = NULL;
         }
+
+        $user->save();
 
         $order->total_price = $total;
 
