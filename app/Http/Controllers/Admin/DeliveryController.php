@@ -21,17 +21,21 @@ class DeliveryController extends Controller
         $ord = Order::where('tracking_no',$trk)->get();
         $ord = $ord[0];
         
-        
-        if($ord->status == 0)
-        {
-            $ord->status = $request->input('shipped') == TRUE?'1':'0';
-        }
-        else if($ord->status == 1)
-        {
-            $ord->status = $request->input('delivered') == TRUE?'2':'1';
-        }
+        if($ord){
+            if($ord->status == 0)
+            {
+                $ord->status = $request->input('shipped') == TRUE?'1':'0';
+            }
+            else if($ord->status == 1)
+            {
+                $ord->status = $request->input('delivered') == TRUE?'2':'1';
+            }
 
-        $ord->update();
-        return redirect('/dashboard')->with('status','Delivery Status Updated Successfully');
+            $ord->update();
+            return redirect('/dashboard')->with('status','Delivery Status Updated Successfully');
+        }
+        else{
+            return redirect('/dashboard')->with('status','Delivery Not Found');
+        }
     }
 }
