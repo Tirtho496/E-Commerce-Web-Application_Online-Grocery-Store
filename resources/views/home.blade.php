@@ -45,7 +45,11 @@
                                             <td>{{$item->paystatus == '0'?'Unpaid': 'Paid'}}</td>
                                             <td><a href="{{url('view-this-order/'.$item->id)}}" class="btn btn-primary">View</a></td>
                                             <input type="hidden" value="{{$item->id}}" class="order_id">
-                                            <td><a href="{{url('delete-order/'.$item->id)}}" class="btn btn-danger">Cancel</a></td>
+                                            @if($item->paystatus=='1' || $item->status == '1')
+                                                <td>No cancellation after payment/shipped</td>
+                                            @else
+                                                <td><a href="{{url('delete-order/'.$item->id)}}" class="btn btn-danger">Cancel</a></td>
+                                            @endif
                                         @endif
                                         
                                     </tr>
@@ -61,7 +65,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <h6>Available Coupons</h6>
+                    <h4>Available Coupons</h4>
+                    <h6>Points: {{$user->points}}</h6>
                     <div class="row">
                     @foreach($coupon as $item)
                     <div class="col-md-4">

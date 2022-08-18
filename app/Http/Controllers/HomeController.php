@@ -33,7 +33,7 @@ class HomeController extends Controller
         $user = User::where('id',Auth::id())->first();
         $points = $user->points;
         $coupon = Coupon::where('points','<=',$points)->get();
-        return view('home',compact('orders','coupon'));
+        return view('home',compact('orders','coupon','user'));
     }
     
     public function viewThisOrder($id)
