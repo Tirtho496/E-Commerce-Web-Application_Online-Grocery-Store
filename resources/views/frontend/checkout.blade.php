@@ -29,36 +29,36 @@ Checkout
                             <div class="row checkout">
                                 <div class="col-md-6">
                                     <label for="firstName">First Name</label>
-                                    <input type="text" name="fname" class="form-control" placeholder="Enter First Name">
+                                    <input type="text" name="fname" class="form-control" placeholder="Enter First Name" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="lastName">Last Name</label>
-                                    <input type="text" name="lname" class="form-control" placeholder="Enter Last Name">
+                                    <input type="text" name="lname" class="form-control" placeholder="Enter Last Name" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Phone Number</label>
-                                    <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number">
+                                    <input type="text" name="phone" class="form-control" placeholder="Enter Phone Number" required>
                                 </div>
                                 
                                 <div class="col-md-6">
                                     <label for="">Email</label>
-                                    <input type="text" name= "email" class="form-control" placeholder="Enter Email Address">
+                                    <input type="text" name= "email" class="form-control" placeholder="Enter Email Address" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Address</label>
-                                    <input type="text" name="address" class="form-control" placeholder="Enter Address">
+                                    <input type="text" name="address" class="form-control" placeholder="Enter Address" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">City</label>
-                                    <input type="text" name="city" class="form-control" placeholder="Enter City">
+                                    <input type="text" name="city" class="form-control" placeholder="Enter City" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">District</label>
-                                    <input type="text" name="district" class="form-control" placeholder="Enter District">
+                                    <input type="text" name="district" class="form-control" placeholder="Enter District" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="">Division</label>
-                                    <input type="text" name = "division" class="form-control" placeholder="Enter Division">
+                                    <input type="text" name = "division" class="form-control" placeholder="Enter Division" required>
                                 </div>
 
                             </div>
@@ -125,19 +125,19 @@ Checkout
                             <form>
                                 <div class="form-group owner">
                                     <label for="owner">Name on Card</label>
-                                    <input type="text" class="form-control" id="owner" name="cardname">
+                                    <input type="text" class="form-control" id="owner" name="cardname" required>
                                 </div>
                                 <div class="form-group CVV">
                                     <label for="cvv">CVV</label>
-                                    <input type="text" class="form-control" id="cvv" name="cvv">
+                                    <input type="text" class="form-control" id="cvv" name="cvv" required>
                                 </div>
                                 <div class="form-group" id="card-number-field">
                                     <label for="cardNumber">Card Number</label>
-                                    <input type="text" class="form-control" id="cardNumber" name="cardNo">
+                                    <input type="text" class="form-control" id="cardNumber" name="cardNo" required>
                                 </div>
                                 <div class="form-group" id="expiration-date">
                                     <label>Expiration Date</label>
-                                    <select>
+                                    <select required>
                                         <option value="01">January</option>
                                         <option value="02">February </option>
                                         <option value="03">March</option>
@@ -151,7 +151,7 @@ Checkout
                                         <option value="11">November</option>
                                         <option value="12">December</option>
                                     </select>
-                                    <select>
+                                    <select required>
                                         <option value="16"> 2022</option>
                                         <option value="17"> 2023</option>
                                         <option value="18"> 2024</option>
